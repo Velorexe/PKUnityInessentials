@@ -1,0 +1,7 @@
+CSVDatabaseReader
+
+It's a very simple program.
+Open the project in Visual Studio and Start the code. The Console will wait for an input from your PC.
+Here you'll fill in the path to the Veekun Database. (If that doesn't work, change "string SourcePath = Console.ReadLine()" to @"INSERT PATH HERE".
+Then it'll loop through the CSV files and it'll create an OUTPUT.txt in the same path as the source path.
+In this OUTPUT.txt will be all the Pokemon writting according to the Pokemon.cs class from Pokemon Unity.
