@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace Gif_to_Sheet
 {
@@ -34,6 +35,15 @@ namespace Gif_to_Sheet
                 {
                     Counter = 0;
                     GifFiles = Directory.GetFiles(fbd.SelectedPath);
+                    for (int i = 0; i < GifFiles.Length; i++)
+                    {
+                        if(Path.GetExtension(GifFiles[i]) != ".gif")
+                        {
+                            var list = new List<string>(GifFiles);
+                            list.Remove(GifFiles[i]);
+                            GifFiles = list.ToArray();
+                        }
+                    }
                     gif = Image.FromFile(GifFiles[Counter]);
                     tbFile.Text = GifFiles[Counter];
                     pbSprite.Visible = true;
@@ -151,11 +161,6 @@ namespace Gif_to_Sheet
         private void TextChange(object sender, EventArgs e)
         {
             FormatImage();
-        }
-
-        public static bool IsOdd(int value)
-        {
-            return value % 2 != 0;
         }
     }
 }

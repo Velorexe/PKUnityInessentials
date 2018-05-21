@@ -26,10 +26,10 @@ C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\obj\Debug\Gif to Sh
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\obj\Debug\Gif to Sheet.pdb
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\Source Project (Visual Studio 2017)\bin\Debug\Gif to Sheet.exe
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\Source Project (Visual Studio 2017)\bin\Debug\Gif to Sheet.pdb
-C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\Source Project (Visual Studio 2017)\obj\Debug\Gif to Sheet.csprojResolveAssemblyReference.cache
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\Source Project (Visual Studio 2017)\obj\Debug\Gif_to_Sheet.MainForm.resources
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\Source Project (Visual Studio 2017)\obj\Debug\Gif_to_Sheet.Properties.Resources.resources
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\Source Project (Visual Studio 2017)\obj\Debug\Gif to Sheet.csproj.GenerateResource.Cache
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\Source Project (Visual Studio 2017)\obj\Debug\Gif to Sheet.csproj.CoreCompileInputs.cache
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\Source Project (Visual Studio 2017)\obj\Debug\Gif to Sheet.exe
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\Source Project (Visual Studio 2017)\obj\Debug\Gif to Sheet.pdb
+C:\Users\David Blerkselmans\Desktop\PokemonSprites\GIF to SH\Source Project (Visual Studio 2017)\obj\Debug\Gif to Sheet.csprojAssemblyReference.cache
