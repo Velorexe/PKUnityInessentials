@@ -18,3 +18,13 @@ C:\Users\David Blerkselmans\Desktop\PokemonSprites\PokemonDatabase\Source Files\
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.csproj.CopyComplete
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.exe
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.pdb
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\bin\Debug\CSVDatabaseReader.exe.config
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\bin\Debug\CSVDatabaseReader.exe
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\bin\Debug\CSVDatabaseReader.pdb
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\bin\Debug\CsvHelper.dll
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\bin\Debug\CsvHelper.xml
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.csprojResolveAssemblyReference.cache
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.csproj.CoreCompileInputs.cache
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.csproj.CopyComplete
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.exe
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.pdb

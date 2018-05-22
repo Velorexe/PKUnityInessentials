@@ -1,0 +1,51 @@
+new PokemonData(1, "Bulbasaur", PokemonData.Type.GRASS, PokemonData.Type.POISON, "Overgrow", null, "Chlorophyll",
+	87.5f, 45, PokemonData.EggGroup.MONSTER, PokemonData.EggGroup.PLANT, 0, 0.7f, 6.9f,
+	64, PokemonData.LevelingRate.MEDIUMSLOW, 0, 0, 0, 1, 0, 0, PokemonData.PokedexColor.GREEN, 70,
+	"Seed", "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon.",
+	45, 49, 49, 65, 65, 45, 0, Color.clear,
+	new int[] { 1, 3, 7, 9, 13, 13, 15, 19, 21, 25, 27, 31, 33, 37},
+	new string[]
+	{
+		 "Tackle", "Growl", "Leech Seed", "Vine Whip", "Poison Powder", "Sleep Powder", "Take Down", "Razor Leaf", "Sweet Scent", "Growth", "Double-Edge", "Worry Seed", "Synthesis", "Seed Bomb",
+	},
+	new string[]
+	{
+		 "Swords Dance", "Cut", "Strength", "Solar Beam", "Toxic", "Double Team", "Light Screen", "Flash", "Rest", "Substitute", "Protect", "Sludge Bomb", "Swagger", "Attract", "Return", "Frustration", "Safeguard", "Hidden Power", "Sunny Day", "Rock Smash", "Facade", "Energy Ball", "Grass Knot", "Venoshock", "Round", "Echoed Voice"
+	},
+	new int[] {}, new string[] {"Level,16"}),
+
+
+new PokemonData(2, "Ivysaur", PokemonData.Type.GRASS, PokemonData.Type.POISON, "Overgrow", null, "Chlorophyll",
+	87.5f, 45, PokemonData.EggGroup.MONSTER, PokemonData.EggGroup.PLANT, 0, 1f, 13f,
+	142, PokemonData.LevelingRate.MEDIUMSLOW, 0, 0, 0, 1, 1, 0, PokemonData.PokedexColor.GREEN, 70,
+	"Seed", "There is a plant bulb on its back. When it absorbs nutrients, the bulb is said toblossom into a large flower.",
+	60, 62, 63, 80, 80, 60, 0, Color.clear,
+	new int[] { 1, 1, 7, 9, 13, 13, 15, 20, 23, 28, 31, 36, 39, 44},
+	new string[]
+	{
+		 "Tackle", "Growl", "Leech Seed", "Vine Whip", "Poison Powder", "Sleep Powder", "Take Down", "Razor Leaf", "Sweet Scent", "Growth", "Double-Edge", "Worry Seed", "Synthesis", "Solar Beam",
+	},
+	new string[]
+	{
+		 "Swords Dance", "Cut", "Strength", "Solar Beam", "Toxic", "Double Team", "Light Screen", "Flash", "Rest", "Substitute", "Protect", "Sludge Bomb", "Swagger", "Attract", "Return", "Frustration", "Safeguard", "Hidden Power", "Sunny Day", "Rock Smash", "Facade", "Energy Ball", "Grass Knot", "Venoshock", "Round", "Echoed Voice"
+	},
+	new int[] {}, new string[] {"Level,32"}),
+
+
+new PokemonData(3, "Venusaur", PokemonData.Type.GRASS, PokemonData.Type.POISON, "Overgrow", null, "Chlorophyll",
+	87.5f, 45, PokemonData.EggGroup.MONSTER, PokemonData.EggGroup.PLANT, 257, 2f, 100f,
+	236, PokemonData.LevelingRate.MEDIUMSLOW, 0, 0, 0, 2, 1, 0, PokemonData.PokedexColor.GREEN, 70,
+	"Seed", "By spreading the broad petals of its flowerand catching the sun’s rays, it fills its bodywith power.",
+	80, 82, 83, 100, 100, 80, 0, Color.clear,
+	new int[] { 1, 1, 7, 13, 13, 15, 20, 23, 28, 31, 32, 39, 45, 53},
+	new string[]
+	{
+		 "Vine Whip", "Growl", "Leech Seed", "Poison Powder", "Sleep Powder", "Take Down", "Razor Leaf", "Sweet Scent", "Growth", "Double-Edge", "Petal Dance", "Worry Seed", "Synthesis", "Solar Beam",
+	},
+	new string[]
+	{
+		 "Swords Dance", "Cut", "Roar", "Hyper Beam", "Strength", "Solar Beam", "Earthquake", "Toxic", "Double Team", "Light Screen", "Flash", "Rest", "Substitute", "Protect", "Sludge Bomb", "Swagger", "Attract", "Return", "Frustration", "Safeguard", "Hidden Power", "Sunny Day", "Rock Smash", "Facade", "Energy Ball", "Giga Impact", "Grass Knot", "Venoshock", "Round", "Echoed Voice", "Bulldoze"
+	},
+	new int[] {}, new string[] {}),
+
+

@@ -33,25 +33,25 @@ namespace CSVDatabaseReader
         public string EYSPE { get; set; }           //Done
         public string PokedexColor { get; set; }    //Done
         public string BaseFrienship { get; set; }   //Done
-        public string Species { get; set; }
-        public string Description { get; set; }
+        public string Species { get; set; }         //Done
+        public string Description { get; set; }     //Done
         public string BSHP { get; set; }            //Done
         public string BSATK { get; set; }           //Done
         public string BSDEF { get; set; }           //Done
         public string BSSPA { get; set; }           //Done
         public string BSSPD { get; set; }           //Done
         public string BSSPE { get; set; }           //Done
-        public string Luminance { get; set; }
-        public string LightColor { get; set; }
-        public string Level { get; set; }
-        public string Moves { get; set; }
-        public string TMMoves { get; set; }
-        public string PokemonEvolution { get; set; }
-        public string LevelEvolution { get; set; }
+        public string Luminance { get; set; }       //Done
+        public string LightColor { get; set; }      //Done
+        public string Level { get; set; }           //Done
+        public string Moves { get; set; }           //Done
+        public string TMMoves { get; set; }         //Done
+        public string PokemonEvolution { get; set; }//Done
+        public string LevelEvolution { get; set; }  //Done
 
         public override string ToString()
         {
-            return string.Format($"new PokemonData({ID}, \"{NAME}\", PokemonData.Type.{Type1}, PokemonData.Type.{Type2}, \"{Ability1}\", {Ability2}, \"{HiddenAbility}\",\n\t" +
+            return string.Format($"new PokemonData({ID}, \"{NAME}\", PokemonData.Type.{Type1}, PokemonData.Type.{Type2}, {Ability1}, {Ability2}, {HiddenAbility},\n\t" +
                 $"{MaleRatio}, {CatchRate}, PokemonData.EggGroup.{EggGroup1}, PokemonData.EggGroup.{EggGroup2}, {HatchTime}, {Height}, {Weight},\n\t" +
                 $"{EXPYield}, PokemonData.LevelingRate.{LevelingRate}, {EYHP}, {EYATK}, {EYDEF}, {EYSPA}, {EYSPD}, {EYSPE}, PokemonData.PokedexColor.{PokedexColor}, {BaseFrienship},\n\t" +
                 $"\"{Species}\", \"{Description}\",\n\t" +
