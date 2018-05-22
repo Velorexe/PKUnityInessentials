@@ -197,20 +197,10 @@ namespace CSVDatabaseReader
                 csv = new CsvReader(CsvReader);
                 while (csv.Read())
                 {
-                    /*if (csv.GetField<string>(0) == (EvolutionID + EvolutionCount).ToString())
+                    if(csv.GetField<string>(1) == (PokemonCounter + 1).ToString())
                     {
-                        if (csv.GetField<string>(1) == (Convert.ToInt64(Entry) + 1).ToString())
-                        {
-                            Pokemon.LevelEvolution = "\"Level," + csv.GetField<string>(4) + "\"";
-                            EvolutionCount++;
-                            break;
-                        }
-                        else
-                        {
-                            EvolutionCount = 0;
-                            break;
-                        }
-                    }*/
+                        Pokemon.LevelEvolution = "\"Level," + csv.GetField<string>(4) + "\"";
+                    }
                 }
 
                 //Pokemon_colors
