@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using CsvHelper;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace CSVDatabaseReader
 {
@@ -13,23 +14,24 @@ namespace CSVDatabaseReader
     {
         static void Main(string[] args)
         {
+            Console.Title = "Veekun Database to Pokemon Unity Database";
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Welcome to the CSV Reader for Pokemon Unity.\n");
+            Console.ResetColor();
             Console.WriteLine("This tool is created by Velorexe for the Pokemon Unity project to easily convert the Veekun Pokemon Database to the format that is used in Pokemon Unity");
             Console.WriteLine("Please fill in the source path to the CSV Pokemon Database from Veekun. This should be a direct path to the directory.\nExample: C:/Users/Velorexe/Desktop/PokemonSprites/PokemonDatabase/Veekun Database/CSV\n");
             string SourcePath = Console.ReadLine();
+            Console.WriteLine();
             string[] csvFiles = Directory.GetFiles(SourcePath);
             csvFiles = csvFiles.Where(w => Path.GetExtension(w) == ".csv").ToArray();
             Console.WriteLine($"{csvFiles.Length} csv files found.");
-            Console.WriteLine("Converting now...");
+            Console.WriteLine("Converting now...\n");
 
             File.Delete(SourcePath + @"\OUTPUT.TXT");
             StreamWriter Output = File.CreateText(SourcePath + @"\OUTPUT.txt");
             Output.Dispose();
 
             int PokemonCounter = 1;
-            int EvolutionCount = 0;
-            int PreviousEvolution = 0;
-            bool EvolutionReset = false;
 
             while (PokemonCounter < 650)
             {
@@ -197,7 +199,7 @@ namespace CSVDatabaseReader
                 csv = new CsvReader(CsvReader);
                 while (csv.Read())
                 {
-                    if(csv.GetField<string>(1) == (PokemonCounter + 1).ToString())
+                    if(csv.GetField<string>(1) == (PokemonCounter + 1).ToString() && csv.GetField<string>(2) == "1" && csv.GetField<string>(4) != "")
                     {
                         Pokemon.LevelEvolution = "\"Level," + csv.GetField<string>(4) + "\"";
                     }
@@ -223,6 +225,12 @@ namespace CSVDatabaseReader
                     {
                         Pokemon.LevelingRate = csv.GetField<string>(1).ToUpper();
                         Pokemon.LevelingRate = Pokemon.LevelingRate.Replace("-", "");
+                        Pokemon.LevelingRate = Pokemon.LevelingRate.Replace("SLOWTHENVERYFAST", "FLUCTUATING");
+                        if(Pokemon.LevelingRate == "MEDIUM")
+                        {
+                            Pokemon.LevelingRate = "MEDIUMFAST";
+                        }
+                        Pokemon.LevelingRate = Pokemon.LevelingRate.Replace("FASTTHENVERYSLOW", "ERRATIC");
                     }
                 }
 
@@ -261,6 +269,10 @@ namespace CSVDatabaseReader
                         Pokemon.EggGroup2 = csv.GetField<string>(1).ToUpper();
                     }
                 }
+                Pokemon.EggGroup1 = Pokemon.EggGroup1.Replace("-", "");
+                Pokemon.EggGroup2 = Pokemon.EggGroup2.Replace("-", "");
+                Pokemon.EggGroup1 = Pokemon.EggGroup1.Replace("NOEGGS", "NONE");
+                Pokemon.EggGroup2 = Pokemon.EggGroup1.Replace("NOEGGS", "NONE");
 
                 //Pokemon_Stats
                 CsvReader = File.OpenText(csvFiles[154]);
@@ -327,7 +339,10 @@ namespace CSVDatabaseReader
                     {
                         string PokedexEntry = csv.GetField<string>(3);
                         PokedexEntry = PokedexEntry.Replace("\n", "");
+                        PokedexEntry = PokedexEntry.Replace("\r", "");
                         PokedexEntry = PokedexEntry.Replace(".", ". ");
+                        PokedexEntry = PokedexEntry.Replace("  ", " ");
+                        PokedexEntry = PokedexEntry.Replace("   ", " ");
                         PokedexEntry = PokedexEntry.Remove(PokedexEntry.Length - 1);
                         Pokemon.Description = PokedexEntry;
                     }
@@ -340,7 +355,7 @@ namespace CSVDatabaseReader
                 csv = new CsvReader(CsvReader);
                 while (csv.Read())
                 {
-                    if (csv.GetField<string>(0) == Entry && csv.GetField<string>(1) == "14" && csv.GetField<string>(3) == "1")
+                    if (csv.GetField<string>(0) == Entry && csv.GetField<string>(1) == "14" && csv.GetField<string>(3) == "1" && csv.GetField<string>(4) != "")
                     {
                         Level.Add(csv.GetField<int>(4));
                         Moves.Add(csv.GetField<string>(2));
@@ -415,7 +430,13 @@ namespace CSVDatabaseReader
                     Output.Write("\n");
                 }
             }
-            Console.ReadKey();
+            Console.WriteLine($"Database is done writing, your file can be found in {SourcePath}/OUTPUT.TXT");
+            Console.WriteLine("Now closing application in 5 seconds.");
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine($"{i}...");
+                Thread.Sleep(1000);
+            }
         }
 
         //Method to make the first letter of a string uppercase
