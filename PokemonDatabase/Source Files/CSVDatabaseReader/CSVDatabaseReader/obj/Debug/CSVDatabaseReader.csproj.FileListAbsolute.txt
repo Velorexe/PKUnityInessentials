@@ -19,8 +19,6 @@ C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseRe
 C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.csprojResolveAssemblyReference.cache
 C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.csproj.CoreCompileInputs.cache
 C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.csproj.CopyComplete
-C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.exe
-C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabaseReader.pdb
 C:\Users\David Blerkselmans\Desktop\CSVDatabasePU.exe.config
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabasePU.exe
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabasePU.pdb
@@ -29,3 +27,8 @@ C:\Users\David Blerkselmans\Desktop\CSVDatabasePU.pdb
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\PokemonDatabase\CSVDatabasePU\CSVDatabasePU.exe.config
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\PokemonDatabase\CSVDatabasePU\CSVDatabasePU.exe
 C:\Users\David Blerkselmans\Desktop\PokemonSprites\PokemonDatabase\CSVDatabasePU\CSVDatabasePU.pdb
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\CSVDatabasePU\CSVDatabasePU.exe.config
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\CSVDatabasePU\CSVDatabasePU.exe
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\CSVDatabasePU\CSVDatabasePU.pdb
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabasePU.exe
+C:\Users\dvddv\Desktop\PokemonSprites\PokemonDatabase\Source Files\CSVDatabaseReader\CSVDatabaseReader\obj\Debug\CSVDatabasePU.pdb

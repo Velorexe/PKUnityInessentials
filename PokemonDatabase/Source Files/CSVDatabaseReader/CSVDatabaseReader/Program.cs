@@ -7,6 +7,8 @@ using System.IO;
 using CsvHelper;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Console = Colorful.Console;
+using System.Drawing;
 
 namespace CSVDatabaseReader
 {
@@ -14,17 +16,81 @@ namespace CSVDatabaseReader
     {
         static void Main(string[] args)
         {
-            Console.Title = "Veekun Database to Pokemon Unity Database";
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("Welcome to the CSV Reader for Pokemon Unity.\n");
-            Console.ResetColor();
+
+            string[] Generations = new string[16]
+            {
+                "Blue and Red", "Yellow", "Gold and Silver", "Crystal", "Ruby and Sapphire", "Emerald", "FireRed and LeafGreen", "Diamond and Pearl", "Platinum", "Heartgold and Soulsilver", "Black and White", "Black 2 and White 2", "X and Y", "Omega Ruby and Alpha Sapphire", "Sun and Moon", "Ultra Sun and Ultra Moon"
+            };
+            Console.WriteAscii("POKEMON UNITY", Color.FromArgb(66, 167, 199));
             Console.WriteLine("This tool is created by Velorexe for the Pokemon Unity project to easily convert the Veekun Pokemon Database to the format that is used in Pokemon Unity");
             Console.WriteLine("Please fill in the source path to the CSV Pokemon Database from Veekun. This should be a direct path to the directory.\nExample: C:/Users/Velorexe/Desktop/PokemonSprites/PokemonDatabase/Veekun Database/CSV\n");
             string SourcePath = Console.ReadLine();
-            Console.WriteLine();
             string[] csvFiles = Directory.GetFiles(SourcePath);
             csvFiles = csvFiles.Where(w => Path.GetExtension(w) == ".csv").ToArray();
-            Console.WriteLine($"{csvFiles.Length} csv files found.");
+            while (csvFiles.Length != 172)
+            {
+                Console.WriteLine("The folder should contain 172 CSV files, yours only contains " + csvFiles.Length + ". Please fill in the correct path.");
+                SourcePath = Console.ReadLine();
+                csvFiles = Directory.GetFiles(SourcePath);
+                csvFiles = csvFiles.Where(w => Path.GetExtension(w) == ".csv").ToArray();
+            }
+            Console.WriteLine();
+            Console.WriteLine($"{csvFiles.Length} csv files found.\n");
+            Console.Write("Loading Generations");
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write(".");
+                Thread.Sleep(500);
+            }
+            Console.Clear();
+            Console.WriteLine("Wich generation would you like to convert? Please press a key to load the generations.");
+            Console.WriteLine("---------------------------");
+
+            int SelectedItem = 0;
+            var k = Console.ReadKey();
+            while (k.Key != ConsoleKey.Enter)
+            {
+                if(k.Key == ConsoleKey.UpArrow)
+                {
+                    SelectedItem--;
+                }
+                else if(k.Key == ConsoleKey.DownArrow)
+                {
+                    SelectedItem++;
+                }
+                Console.Clear();
+                Console.WriteLine("Wich generation would you like to convert?");
+                Console.WriteLine("---------------------------");
+                for (int i = 0; i < Generations.Length; i++)
+                {
+                    if (SelectedItem == Generations.Length)
+                    {
+                        SelectedItem = 0;
+                    }
+                    else if (SelectedItem == -1)
+                    {
+                        SelectedItem = Generations.Length - 1;
+                    }
+                    if (i == SelectedItem)
+                    {
+                        Console.ForegroundColor = Color.Blue;
+                        Console.WriteLine(Generations[i]);
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.WriteLine(Generations[i]);
+                    }
+                }
+                Console.WriteLine("---------------------------");
+                k = Console.ReadKey();
+            }
+            SelectedItem++;
+            if (SelectedItem > 11)
+            {
+                SelectedItem = SelectedItem + 2;
+            }
+            Console.ReadKey();
             Console.WriteLine("Converting now...\n");
 
             File.Delete(SourcePath + @"\OUTPUT.TXT");
@@ -32,10 +98,65 @@ namespace CSVDatabaseReader
             Output.Dispose();
 
             int PokemonCounter = 1;
+            int MaxPoke = 0;
+            string Generation = SelectedItem.ToString();
 
-            while (PokemonCounter < 650)
+            /*
+            Corresponding numbers with gens
+            1 Red and blue
+            2 Yellow
+            3 Gold and Silver
+            4 Crystal
+            5 Sapphire
+            6 Emerald
+            7 FireRed and LeafGreen
+            8 Diamond and Pearl
+            9 Platinum
+            10 Heartgold and Soulsilver
+            11 Black And White
+            14 Black 2 and White 2
+            15 X and Y
+            16 Omega Ruby and Alpha Sapphire
+            17 Sun and Moon
+            18 Ultra Sun and Ultra Moon
+             */
+
+            switch (SelectedItem)
             {
+                case (1):
+                case (2):
+                    MaxPoke = 151;
+                    break;
+                case (3):
+                case (4):
+                    MaxPoke = 251;
+                    break;
+                case (5):
+                case (6):
+                case (7):
+                    MaxPoke = 386;
+                    break;
+                case (8):
+                case (9):
+                case (10):
+                    MaxPoke = 493;
+                    break;
+                case (11):
+                case (14):
+                    MaxPoke = 649;
+                    break;
+                case (15):
+                case (16):
+                    MaxPoke = 721;
+                    break;
+                case (17):
+                case (18):
+                    MaxPoke = 807;
+                    break;
+            }
 
+            while (PokemonCounter < MaxPoke + 1)
+            {
                 string Ability1 = "";
                 string Ability2 = "";
                 string HiddenAbility = "";
@@ -110,7 +231,7 @@ namespace CSVDatabaseReader
                         Pokemon.Type2 = Type2;
                     }
                 }
-                if(Type2 == null || Type2 == "")
+                if (Type2 == null || Type2 == "")
                 {
                     Pokemon.Type2 = "NONE";
                 }
@@ -142,7 +263,7 @@ namespace CSVDatabaseReader
                             Ability2 = "null";
                             Pokemon.Ability2 = Ability2;
                         }
-                        else if(csv.GetField<string>(0) == Entry && csv.GetField<string>(2) == "1")
+                        else if (csv.GetField<string>(0) == Entry && csv.GetField<string>(2) == "1")
                         {
                             HiddenAbility = csv.GetField<string>(1);
                         }
@@ -168,7 +289,7 @@ namespace CSVDatabaseReader
                     }
                 }
 
-                if(Pokemon.HiddenAbility == "" || Pokemon.HiddenAbility == null)
+                if (Pokemon.HiddenAbility == "" || Pokemon.HiddenAbility == null)
                 {
                     Pokemon.HiddenAbility = "null";
                 }
@@ -199,7 +320,7 @@ namespace CSVDatabaseReader
                 csv = new CsvReader(CsvReader);
                 while (csv.Read())
                 {
-                    if(csv.GetField<string>(1) == (PokemonCounter + 1).ToString() && csv.GetField<string>(2) == "1" && csv.GetField<string>(4) != "")
+                    if (csv.GetField<string>(1) == (PokemonCounter + 1).ToString() && csv.GetField<string>(2) == "1" && csv.GetField<string>(4) != "")
                     {
                         Pokemon.LevelEvolution = "\"Level," + csv.GetField<string>(4) + "\"";
                     }
@@ -226,7 +347,7 @@ namespace CSVDatabaseReader
                         Pokemon.LevelingRate = csv.GetField<string>(1).ToUpper();
                         Pokemon.LevelingRate = Pokemon.LevelingRate.Replace("-", "");
                         Pokemon.LevelingRate = Pokemon.LevelingRate.Replace("SLOWTHENVERYFAST", "FLUCTUATING");
-                        if(Pokemon.LevelingRate == "MEDIUM")
+                        if (Pokemon.LevelingRate == "MEDIUM")
                         {
                             Pokemon.LevelingRate = "MEDIUMFAST";
                         }
@@ -355,12 +476,12 @@ namespace CSVDatabaseReader
                 csv = new CsvReader(CsvReader);
                 while (csv.Read())
                 {
-                    if (csv.GetField<string>(0) == Entry && csv.GetField<string>(1) == "14" && csv.GetField<string>(3) == "1" && csv.GetField<string>(4) != "")
+                    if (csv.GetField<string>(0) == Entry && csv.GetField<string>(1) == Generation && csv.GetField<string>(3) == "1" && csv.GetField<string>(4) != "")
                     {
                         Level.Add(csv.GetField<int>(4));
                         Moves.Add(csv.GetField<string>(2));
                     }
-                    else if (csv.GetField<string>(0) == Entry && csv.GetField<string>(1) == "14" && csv.GetField<string>(3) == "4")
+                    else if (csv.GetField<string>(0) == Entry && csv.GetField<string>(1) == Generation && csv.GetField<string>(3) == "4")
                     {
                         TMList.Add(csv.GetField<string>(2));
                     }
@@ -434,7 +555,7 @@ namespace CSVDatabaseReader
             Console.WriteLine("Now closing application in 5 seconds.");
             for (int i = 0; i < 5; i++)
             {
-                Console.WriteLine($"{i}...");
+                Console.WriteLine($"{5 - i}...");
                 Thread.Sleep(1000);
             }
         }
