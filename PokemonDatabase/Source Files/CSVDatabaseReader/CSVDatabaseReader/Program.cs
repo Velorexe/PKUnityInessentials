@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using Console = Colorful.Console;
 using System.Drawing;
+using Windows.UI.Notifications;
 
 namespace CSVDatabaseReader
 {
@@ -21,6 +22,7 @@ namespace CSVDatabaseReader
             {
                 "Blue and Red", "Yellow", "Gold and Silver", "Crystal", "Ruby and Sapphire", "Emerald", "FireRed and LeafGreen", "Diamond and Pearl", "Platinum", "Heartgold and Soulsilver", "Black and White", "Black 2 and White 2", "X and Y", "Omega Ruby and Alpha Sapphire", "Sun and Moon", "Ultra Sun and Ultra Moon"
             };
+            Console.Title = "Veekun's CSV Database to Pokemon Unity's PokemonDatabase Converter ~ by Velorexe";
             Console.WriteAscii("POKEMON UNITY", Color.FromArgb(66, 167, 199));
             Console.WriteLine("This tool is created by Velorexe for the Pokemon Unity project to easily convert the Veekun Pokemon Database to the format that is used in Pokemon Unity");
             Console.WriteLine("Please fill in the source path to the CSV Pokemon Database from Veekun. This should be a direct path to the directory.\nExample: C:/Users/Velorexe/Desktop/PokemonSprites/PokemonDatabase/Veekun Database/CSV\n");
@@ -43,7 +45,7 @@ namespace CSVDatabaseReader
                 Thread.Sleep(500);
             }
             Console.Clear();
-            Console.WriteLine("Wich generation would you like to convert? Please press a key to load the generations.");
+            Console.WriteLine("Wich generation would you like to convert? Please press a key to load the generations. (Every key except 'Enter' please I haven't optimised the code yet)");
             Console.WriteLine("---------------------------");
 
             int SelectedItem = 0;
@@ -85,6 +87,7 @@ namespace CSVDatabaseReader
                 Console.WriteLine("---------------------------");
                 k = Console.ReadKey();
             }
+            int displayItem = SelectedItem;
             SelectedItem++;
             if (SelectedItem > 11)
             {
@@ -93,8 +96,8 @@ namespace CSVDatabaseReader
             Console.ReadKey();
             Console.WriteLine("Converting now...\n");
 
-            File.Delete(SourcePath + @"\OUTPUT.TXT");
-            StreamWriter Output = File.CreateText(SourcePath + @"\OUTPUT.txt");
+            File.Delete(SourcePath + @"\OUTPUT " + Generations[displayItem] + ".txt");
+            StreamWriter Output = File.CreateText(SourcePath + @"\OUTPUT " + Generations[displayItem] + ".txt");
             Output.Dispose();
 
             int PokemonCounter = 1;
@@ -323,6 +326,7 @@ namespace CSVDatabaseReader
                     if (csv.GetField<string>(1) == (PokemonCounter + 1).ToString() && csv.GetField<string>(2) == "1" && csv.GetField<string>(4) != "")
                     {
                         Pokemon.LevelEvolution = "\"Level," + csv.GetField<string>(4) + "\"";
+                        Pokemon.PokemonEvolution = csv.GetField<string>(1);
                     }
                 }
 
@@ -500,7 +504,10 @@ namespace CSVDatabaseReader
                     {
                         if (csv.GetField<string>(0) == TMArray[i] && csv.GetField<string>(1) == "9")
                         {
-                            TM = TM + " \"" + csv.GetField<string>(2) + "\",";
+                            string TMMove = csv.GetField<string>(2);
+                            TMMove = TMMove.Replace(' ', '_');
+                            TMMove = TMMove.Replace('-', '_');
+                            TM = TM + " \"" + TMMove + "\",";
                         }
                     }
                     for (int i = 0; i < Moves.Count; i++)
@@ -539,11 +546,11 @@ namespace CSVDatabaseReader
                 Pokemon.Moves = MoveLevel;
                 Pokemon.TMMoves = TM;
 
-                //Showing the Pokemon and waiting for input
+                //Showing the Pokemon in console
                 Console.WriteLine(Pokemon.ToString());
                 PokemonCounter++;
 
-                using (Output = File.AppendText(SourcePath + @"\OUTPUT.txt"))
+                using (Output = File.AppendText(SourcePath + @"\OUTPUT " + Generations[displayItem] + ".txt"))
                 {
                     string OutputText = Pokemon.ToString();
                     OutputText = OutputText.Replace("\n", System.Environment.NewLine);
@@ -552,12 +559,7 @@ namespace CSVDatabaseReader
                 }
             }
             Console.WriteLine($"Database is done writing, your file can be found in {SourcePath}/OUTPUT.TXT");
-            Console.WriteLine("Now closing application in 5 seconds.");
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine($"{5 - i}...");
-                Thread.Sleep(1000);
-            }
+            Console.ReadKey();
         }
 
         //Method to make the first letter of a string uppercase
@@ -569,5 +571,6 @@ namespace CSVDatabaseReader
             }
             return char.ToUpper(s[0]) + s.Substring(1);
         }
+
     }
 }

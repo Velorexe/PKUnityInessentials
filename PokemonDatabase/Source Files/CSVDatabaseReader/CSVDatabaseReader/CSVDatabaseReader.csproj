@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
+    <targetplatformversion>8.0</targetplatformversion>
+  </PropertyGroup>
+  <PropertyGroup>
     <ApplicationIcon>Icon %282%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
@@ -50,6 +53,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Windows.UI" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pokemon.cs" />
