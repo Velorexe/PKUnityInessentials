@@ -1,7 +1,32 @@
 CSVDatabaseReader
 
-It's a very simple program.
-Open the project in Visual Studio and Start the code. The Console will wait for an input from your PC.
-Here you'll fill in the path to the Veekun Database. (If that doesn't work, change "string SourcePath = Console.ReadLine()" to @"INSERT PATH HERE".
-Then it'll loop through the CSV files and it'll create an OUTPUT.txt in the same path as the source path.
-In this OUTPUT.txt will be all the Pokemon writting according to the Pokemon.cs class from Pokemon Unity.
+It's a pretty simple program, the guide is on screen when you start it.
+You have to fill in a valid path to the Veekun Database (this should be in a directory on your PC).
+In that directory should be ALL the .csv files from Veekun, since my program depends on those files.
+Then you can pick your GEN that you want to convert to Pokemon Unity's PokemonData format.
+This will take some time and has a pretty big impact on your CPU (Will fix in the future).
+When it's done you can find the Output.txt in the same folder as the .csv files.
+You can copy and paste those into the PokemonDatabase.cs in Pokemon Unity.
+The only thing that you need to change is the PokemonData class, where you should replace the egg group to the Veekun type's.
+
+public enum EggGroup
+{
+  MONSTER,
+  WATER1,
+  BUG,
+  FLYING,
+  GROUND,
+  FAIRY,
+  PLANT,
+  HUMANSHAPE,
+  WATER3,
+  MINERAL,
+  INDETERMINATE,
+  WATER2,
+  DITTO,
+  DRAGON,
+  UNDISCOVERED,
+  NONE
+};
+
+Simple right?
