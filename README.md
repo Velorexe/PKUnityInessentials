@@ -11,8 +11,9 @@
 The sprite GIF animations are downloaded from: https://sprites.pokecheck.org/
 The 'GIF to SH' program is an edited version of: https://forum.chaos-project.com/index.php?topic=11601.0
 
-My version of the program let's you convert an entire directory with GIFs to an entire directory with spread sheets of the converted GIFs.
-It also let's you set the width and height for the frames.
+This GitHub Repository includes some helpful programs and items for PK-Unity, like a Veekun Database to PK-Unity Database converter and a GIF to Spritesheet converter.
+Really helpful stuff.
+These stuff are made for Pokemon Unity because I have too much spare time.
 
 Check out Pokemon Unity
 ## Links

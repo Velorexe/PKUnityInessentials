@@ -19,7 +19,8 @@ namespace Gif_to_Sheet
         Bitmap bitmap;
         int Counter = 0;
         string[] GifFiles;
-
+        int frames;
+        
         public MainForm()
         {
             InitializeComponent();
@@ -81,7 +82,7 @@ namespace Gif_to_Sheet
             HeightBox.Text = y.ToString();
             FrameDimension frameSize = new FrameDimension(gif.FrameDimensionsList[0]);
             Size imageSize = new Size(x, y);
-            int frames = gif.GetFrameCount(frameSize);
+            frames = gif.GetFrameCount(frameSize);
             Console.WriteLine(frames);
             int columns = (int)nudColumns.Value < 1 ? frames : (int)nudColumns.Value;
             int rows = (int)Math.Ceiling((double)frames / columns);
@@ -126,12 +127,22 @@ namespace Gif_to_Sheet
                 if (fbd.SelectedPath != "")
                 {
                     int displayName = Convert.ToInt32(Regex.Replace(Path.GetFileNameWithoutExtension(GifFiles[Counter]), "[^0-9.]", ""));
+                    File.Delete(fbd.SelectedPath + "/frames.txt");
                     while (GifFiles.Length > Counter)
                     {
                         gif = Image.FromFile(GifFiles[Counter]);
                         FormatImage();
                         ImageFormat format = ImageFormat.Png;
                         gif.Dispose();
+
+                        if (Counter < GifFiles.Length - 1)
+                        {
+                            File.AppendAllText(fbd.SelectedPath + "/frames.txt", frames + ",");
+                        }
+                        else
+                        {
+                            File.AppendAllText(fbd.SelectedPath + "/frames.txt", frames + "");
+                        }
 
                         string tempString = Path.GetFileNameWithoutExtension(GifFiles[Counter]);
                         tempString = Regex.Replace(tempString, @"[\d-]", string.Empty);
