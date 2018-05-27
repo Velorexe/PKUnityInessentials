@@ -3,10 +3,32 @@
 using UnityEngine;
 using System.Collections;
 
-//The Database is incomplete. Many Pokémon have not been programmed in. If you wish to add a Pokémon's data
-//  to the database, ensure that it is placed in the correct position for it's ID.
-//  E.G. Pikachu (025) would go after Arbok (024) or the closest ID below if Arbok isn't there (i.e. Fearow (022))
-//         and before Raichu (026) or the closest ID above if Raichu isn't there (i.e. Nidoran♂ (032))
+//Important to note:
+//You need to change the PokemonData.cs to make this work
+//Replace the egg group enum with this:
+/*public enum EggGroup
+{
+  MONSTER,
+  WATER1,
+  BUG,
+  FLYING,
+  GROUND,
+  FAIRY,
+  PLANT,
+  HUMANSHAPE,
+  WATER3,
+  MINERAL,
+  INDETERMINATE,
+  WATER2,
+  DITTO,
+  DRAGON,
+  UNDISCOVERED,
+  NONE
+};
+*/
+//Then it should work fine. If it doesn't, then that means that the moves that are in the database are not in the movedatabase yet.
+//If you don't want this to happen, download the csvdatabasepu and the veekun database (csvdatabasepu is located in PokemonSprites/PokemonDatabase/CSVDatabasePU/ and veekun database is located in https://github.com/Velorexe/PokemonSprites/tree/PokemonUnity/PokemonDatabase/Veekun%20Database)
+//Run csvdatabasepu, give it the source folder of the veekun database and select a lower gen
 
 public static class PokemonDatabase
 {
