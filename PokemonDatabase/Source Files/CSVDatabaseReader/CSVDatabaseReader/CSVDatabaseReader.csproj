@@ -56,6 +56,7 @@
     <Reference Include="Windows.UI" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Move.cs" />
     <Compile Include="Pokemon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,7 +9,6 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using Console = Colorful.Console;
 using System.Drawing;
-using Windows.UI.Notifications;
 
 namespace CSVDatabaseReader
 {
@@ -52,11 +51,11 @@ namespace CSVDatabaseReader
             var k = Console.ReadKey();
             while (k.Key != ConsoleKey.Enter)
             {
-                if(k.Key == ConsoleKey.UpArrow)
+                if (k.Key == ConsoleKey.UpArrow)
                 {
                     SelectedItem--;
                 }
-                else if(k.Key == ConsoleKey.DownArrow)
+                else if (k.Key == ConsoleKey.DownArrow)
                 {
                     SelectedItem++;
                 }
@@ -93,11 +92,10 @@ namespace CSVDatabaseReader
             {
                 SelectedItem = SelectedItem + 2;
             }
-            Console.ReadKey();
             Console.WriteLine("Converting now...\n");
 
-            File.Delete(SourcePath + @"\OUTPUT " + Generations[displayItem] + ".txt");
-            StreamWriter Output = File.CreateText(SourcePath + @"\OUTPUT " + Generations[displayItem] + ".txt");
+            File.Delete(SourcePath + @"\POKEMONOUTPUT " + Generations[displayItem] + ".txt");
+            StreamWriter Output = File.CreateText(SourcePath + @"\POKEMONOUTPUT " + Generations[displayItem] + ".txt");
             Output.Dispose();
 
             int PokemonCounter = 1;
@@ -124,40 +122,49 @@ namespace CSVDatabaseReader
             18 Ultra Sun and Ultra Moon
              */
 
+            int Gen1 = 151;
+            int Gen2 = 251;
+            int Gen3 = 386;
+            int Gen4 = 493;
+            int Gen5 = 649;
+            int Gen6 = 721;
+            int Gen7 = 807;
+
             switch (SelectedItem)
             {
                 case (1):
                 case (2):
-                    MaxPoke = 151;
+                    MaxPoke = Gen1;
                     break;
                 case (3):
                 case (4):
-                    MaxPoke = 251;
+                    MaxPoke = Gen2;
                     break;
                 case (5):
                 case (6):
                 case (7):
-                    MaxPoke = 386;
+                    MaxPoke = Gen3;
                     break;
                 case (8):
                 case (9):
                 case (10):
-                    MaxPoke = 493;
+                    MaxPoke = Gen4;
                     break;
                 case (11):
                 case (14):
-                    MaxPoke = 649;
+                    MaxPoke = Gen5;
                     break;
                 case (15):
                 case (16):
-                    MaxPoke = 721;
+                    MaxPoke = Gen6;
                     break;
                 case (17):
                 case (18):
-                    MaxPoke = 807;
+                    MaxPoke = Gen7;
                     break;
             }
 
+            int RegionDex = 1;
             while (PokemonCounter < MaxPoke + 1)
             {
                 string Ability1 = "";
@@ -178,11 +185,16 @@ namespace CSVDatabaseReader
 
                 Dictionary<string, int> MoveLevelDictionary = new Dictionary<string, int>();
                 List<string> TMList = new List<string>();
-                string MoveLevel = "";
 
                 string Entry = PokemonCounter.ToString();
 
                 Pokemon Pokemon = new Pokemon();
+
+                if (RegionDex == Gen1 || RegionDex == Gen2 || RegionDex == Gen3 || RegionDex == Gen4 || RegionDex == Gen5 || RegionDex == Gen6 || RegionDex == Gen7)
+                {
+                    RegionDex = 1;
+                }
+                Pokemon.RegionalDex = PokemonCounter.ToString();
 
                 //Pokemon
                 TextReader CsvReader = File.OpenText(csvFiles[129]);
@@ -263,7 +275,7 @@ namespace CSVDatabaseReader
                         csv.Read();
                         if (csv.GetField<string>(0) != Entry)
                         {
-                            Ability2 = "null";
+                            Ability2 = "NONE";
                             Pokemon.Ability2 = Ability2;
                         }
                         else if (csv.GetField<string>(0) == Entry && csv.GetField<string>(2) == "1")
@@ -280,21 +292,21 @@ namespace CSVDatabaseReader
                 {
                     if (csv.GetField<string>(0) == Ability1)
                     {
-                        Pokemon.Ability1 = "\"" + UpperCaseFirst(csv.GetField<string>(1)) + "\"";
+                        Pokemon.Ability1 = "" + UpperCaseFirst(csv.GetField<string>(1)) + "";
                     }
-                    else if (csv.GetField<string>(0) == Ability2 && Ability2 != "null")
+                    else if (csv.GetField<string>(0) == Ability2 && Ability2 != "NONE")
                     {
-                        Pokemon.Ability2 = "\"" + UpperCaseFirst(csv.GetField<string>(1)) + "\"";
+                        Pokemon.Ability2 = "" + UpperCaseFirst(csv.GetField<string>(1)) + "";
                     }
                     else if (csv.GetField<string>(0) == HiddenAbility)
                     {
-                        Pokemon.HiddenAbility = "\"" + UpperCaseFirst(csv.GetField<string>(1)) + "\"";
+                        Pokemon.HiddenAbility = "" + UpperCaseFirst(csv.GetField<string>(1)) + "";
                     }
                 }
 
                 if (Pokemon.HiddenAbility == "" || Pokemon.HiddenAbility == null)
                 {
-                    Pokemon.HiddenAbility = "null";
+                    Pokemon.HiddenAbility = "NONE";
                 }
 
                 //Pokemon_Species
@@ -306,8 +318,8 @@ namespace CSVDatabaseReader
                     {
                         Pokemon.MaleRatio = (100.0 - (100.0 / 8.0 * csv.GetField<double>(8))).ToString() + "f";
                         Pokemon.CatchRate = csv.GetField<string>(9);
-                        Pokemon.BaseFrienship = csv.GetField<string>(10);
-                        Pokemon.HatchTime = (257 * csv.GetField<int>(13)).ToString();
+                        Pokemon.BaseFriendship = csv.GetField<string>(10);
+                        Pokemon.HatchTime = (257 * csv.GetField<int>(12)).ToString();
                         GrowthRate = csv.GetField<string>(14);
                         Color_ID = csv.GetField<string>(5);
                         if (csv.GetField<string>(4) != "")
@@ -319,14 +331,70 @@ namespace CSVDatabaseReader
                 }
 
                 //Pokemon_Evolution
-                CsvReader = File.OpenText(csvFiles[135]);
+                //For Level
+                CsvReader = File.OpenText(csvFiles[149]);
                 csv = new CsvReader(CsvReader);
                 while (csv.Read())
                 {
                     if (csv.GetField<string>(1) == (PokemonCounter + 1).ToString() && csv.GetField<string>(2) == "1" && csv.GetField<string>(4) != "")
                     {
-                        Pokemon.LevelEvolution = "\"Level," + csv.GetField<string>(4) + "\"";
+                        string PokemonEvolution = $"new PokemonEvolution(Pokemons.{Pokemon.NAME.ToUpper()}, EvolutionMethod.Level, {csv.GetField<string>(4)})";
                         Pokemon.PokemonEvolution = csv.GetField<string>(1);
+                    }
+                }
+
+                if (Pokemon.PokemonEvolution != "")
+                {
+                    //Pokemon_Evolution
+                    //For Item
+                    CsvReader = File.OpenText(csvFiles[149]);
+                    csv = new CsvReader(CsvReader);
+                    while (csv.Read())
+                    {
+                        if (csv.GetField<string>(1) == (PokemonCounter + 1).ToString() && csv.GetField<string>(2) == "3" && csv.GetField<string>(5) == "")
+                        {
+                            if (csv.GetField<string>(11) != "" && csv.GetField<string>(8) == "")
+                            {
+                                if (csv.GetField<string>(8) == "")
+                                {
+                                    string ItemEvolution = $"new PokemonEvolution(Pokemons.{Pokemon.NAME.ToUpper()}, EvolutionMethod.Item)";
+                                }
+                                else if(csv.GetField<string>(8) == "day")
+                                {
+                                    string ItemEvolution = $"new PokemonEvolution(Pokemons.{Pokemon.NAME.ToUpper()}, EvolutionMethod.ItemHeldDay)"; //Add everything else
+                                }
+                            }
+                            else
+                            {
+                                string ItemEvolution = $"new PokemonEvolution(Pokemons.{Pokemon.NAME.ToUpper()}, EvolutionMethod.Item)";
+                            }
+                        }
+                        else if (csv.GetField<string>(1) == (PokemonCounter + 1).ToString() && csv.GetField<string>(2) == "3" && csv.GetField<string>(5) != "")
+                        {
+                            if (csv.GetField<string>(5) == "1")
+                            {
+                                string ItemEvolution = $"new PokemonEvolution(Pokemons.{Pokemon.NAME.ToUpper()}, EvolutionMethod.ItemFemale)";
+                            }
+                            else
+                            {
+                                string ItemEvolution = $"new PokemonEvolution(Pokemons.{Pokemon.NAME.ToUpper()}, EvolutionMethod.ItemMale)";
+                            }
+                        }
+                        else if (csv.GetField<string>(1) == (PokemonCounter + 1).ToString() && csv.GetField<string>(2) == "2")
+                        {
+                            if (csv.GetField<string>(5) != "")
+                            {
+                                string ItemEvolution = $"new PokemonEvolution(Pokemons.{Pokemon.NAME.ToUpper()}, EvolutionMethod.Trade)";
+                            }
+                            else
+                            {
+                                string ItemEvolution = $"new PokemonEvolution(Pokemons.{Pokemon.NAME.ToUpper()}, EvolutionMethod.TradeItem)";
+                            }
+                        }
+                        else if (csv.GetField<string>(1) == (PokemonCounter + 1).ToString() && csv.GetField<string>(2) == "4")
+                        {
+
+                        }
                     }
                 }
 
@@ -387,17 +455,61 @@ namespace CSVDatabaseReader
                 {
                     if (csv.GetField<string>(0) == EggGroup1)
                     {
-                        Pokemon.EggGroup1 = csv.GetField<string>(1).ToUpper();
+                        if (csv.GetField<string>(1) == "ground")
+                        {
+                            EggGroup1 = "FIELD";
+                        }
+                        else if (csv.GetField<string>(1) == "plant")
+                        {
+                            EggGroup1 = "GRASS";
+                        }
+                        else if (csv.GetField<string>(1) == "humanshape")
+                        {
+                            EggGroup1 = "HUMANLIKE";
+                        }
+                        else if (csv.GetField<string>(1) == "indeterminate")
+                        {
+                            EggGroup1 = "AMORPHOUS";
+                        }
+                        else if (csv.GetField<string>(1) == "no-eggs")
+                        {
+                            EggGroup1 = "UNDISCOVERED";
+                        }
+                        else
+                        {
+                            Pokemon.EggGroup1 = csv.GetField<string>(1).ToUpper();
+                        }
                     }
-                    else if (csv.GetField<string>(0) == EggGroup2 && EggGroup2 != "null")
+                    else if (csv.GetField<string>(0) == EggGroup2 && EggGroup2 != "NONE")
                     {
-                        Pokemon.EggGroup2 = csv.GetField<string>(1).ToUpper();
+                        if (csv.GetField<string>(1) == "ground")
+                        {
+                            EggGroup2 = "FIELD";
+                        }
+                        else if (csv.GetField<string>(1) == "plant")
+                        {
+                            EggGroup2 = "GRASS";
+                        }
+                        else if (csv.GetField<string>(1) == "humanshape")
+                        {
+                            EggGroup2 = "HUMANLIKE";
+                        }
+                        else if (csv.GetField<string>(1) == "indeterminate")
+                        {
+                            EggGroup2 = "AMORPHOUS";
+                        }
+                        else if (csv.GetField<string>(1) == "no-eggs")
+                        {
+                            EggGroup2 = "UNDISCOVERED";
+                        }
+                        else
+                        {
+                            Pokemon.EggGroup2 = csv.GetField<string>(1).ToUpper();
+                        }
                     }
                 }
                 Pokemon.EggGroup1 = Pokemon.EggGroup1.Replace("-", "");
                 Pokemon.EggGroup2 = Pokemon.EggGroup2.Replace("-", "");
-                Pokemon.EggGroup1 = Pokemon.EggGroup1.Replace("NOEGGS", "NONE");
-                Pokemon.EggGroup2 = Pokemon.EggGroup1.Replace("NOEGGS", "NONE");
 
                 //Pokemon_Stats
                 CsvReader = File.OpenText(csvFiles[154]);
@@ -507,7 +619,12 @@ namespace CSVDatabaseReader
                             string TMMove = csv.GetField<string>(2);
                             TMMove = TMMove.Replace(' ', '_');
                             TMMove = TMMove.Replace('-', '_');
-                            TM = TM + " \"" + TMMove + "\",";
+                            TM = TM +
+                            $"\tnew PokemonMoveset" +
+                            $"\n\t(" +
+                                $"\tmoveId: Moves.{TMMove}," +
+                                $"\n\t\tmethod: LearnMethod.machine," +
+                            $"\n\t),\n";
                         }
                     }
                     for (int i = 0; i < Moves.Count; i++)
@@ -534,23 +651,34 @@ namespace CSVDatabaseReader
 
                 foreach (KeyValuePair<string, int> pair in items)
                 {
-                    LevelString = LevelString + " " + pair.Value + ",";
-                    MoveLevel = MoveLevel + " \"" + pair.Key + "\",";
+                    string moveId = pair.Key.Replace(' ', '_');
+                    moveId = moveId.Replace('-', '_');
+                    LevelString = LevelString +
+                        (
+                        $"\tnew PokemonMoveset" +
+                        $"\n\t(" +
+                            $"\tmoveId: Moves.{moveId}," +
+                            $"\n\t\tmethod: LearnMethod.levelup," +
+                            $"\n\t\tlevel: {pair.Value}" +
+                        $"\n\t),\n");
                 }
                 if (TM != "")
                 {
                     TM = TM.Remove(TM.Length - 1);
                 }
+                TM = TM.Replace("\n", System.Environment.NewLine);
+                LevelString = LevelString.Replace("\n", System.Environment.NewLine);
                 LevelString = LevelString.Remove(LevelString.Length - 1);
-                Pokemon.Level = LevelString;
-                Pokemon.Moves = MoveLevel;
+                Pokemon.LevelMoves = LevelString;
                 Pokemon.TMMoves = TM;
 
                 //Showing the Pokemon in console
-                Console.WriteLine(Pokemon.ToString());
+                string OutputText1 = Pokemon.ToString();
+                Console.WriteLine(OutputText1.Replace("\n", System.Environment.NewLine));
                 PokemonCounter++;
+                RegionDex++;
 
-                using (Output = File.AppendText(SourcePath + @"\OUTPUT " + Generations[displayItem] + ".txt"))
+                using (Output = File.AppendText(SourcePath + @"\POKEMONOUTPUT " + Generations[displayItem] + ".txt"))
                 {
                     string OutputText = Pokemon.ToString();
                     OutputText = OutputText.Replace("\n", System.Environment.NewLine);
@@ -558,7 +686,7 @@ namespace CSVDatabaseReader
                     Output.Write("\n");
                 }
             }
-            Console.WriteLine($"Database is done writing, your file can be found in {SourcePath}/OUTPUT.TXT");
+            Console.WriteLine($"Database is done writing, your file can be found in {SourcePath}/POKEMONOUTPUT.TXT");
             Console.ReadKey();
         }
 
@@ -571,6 +699,5 @@ namespace CSVDatabaseReader
             }
             return char.ToUpper(s[0]) + s.Substring(1);
         }
-
     }
 }
