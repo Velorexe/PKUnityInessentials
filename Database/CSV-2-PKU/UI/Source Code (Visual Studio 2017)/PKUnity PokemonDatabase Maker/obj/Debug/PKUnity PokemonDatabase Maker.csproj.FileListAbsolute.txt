@@ -1,0 +1,16 @@
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\obj\Debug\PKUnity PokemonDatabase Maker.csprojAssemblyReference.cache
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\bin\Debug\PKUnity PokemonDatabase Maker.exe.config
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\bin\Debug\PKUnity PokemonDatabase Maker.exe
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\bin\Debug\PKUnity PokemonDatabase Maker.pdb
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\obj\Debug\PKUnity_PokemonDatabase_Maker.Information.resources
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\obj\Debug\PKUnity_PokemonDatabase_Maker.DatabaseMakerForm.resources
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\obj\Debug\PKUnity_PokemonDatabase_Maker.Properties.Resources.resources
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\obj\Debug\PKUnity PokemonDatabase Maker.csproj.GenerateResource.cache
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\obj\Debug\PKUnity PokemonDatabase Maker.csproj.CoreCompileInputs.cache
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\obj\Debug\PKUnity PokemonDatabase Maker.exe
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\obj\Debug\PKUnity PokemonDatabase Maker.pdb
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\bin\Debug\CsvHelper.dll
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\bin\Debug\CsvHelper.xml
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\bin\Debug\Microsoft.WindowsAPICodePack.xml
+C:\Users\David Blerkselmans\source\repos\PKUnity PokemonDatabase Maker\PKUnity PokemonDatabase Maker\obj\Debug\PKUnity PokemonDatabase Maker.csproj.CopyComplete

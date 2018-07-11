@@ -8,12 +8,15 @@
   </p>
 </p>
 
-The sprite GIF animations are downloaded from: https://sprites.pokecheck.org/
-The 'GIF to SH' program is an edited version of: https://forum.chaos-project.com/index.php?topic=11601.0
+In this GitHub repo you'll find some helpful tools, programs and files to help you build your Pokemon game with Pokemon Unity.
 
-This GitHub Repository includes some helpful programs and items for PK-Unity, like a Veekun Database to PK-Unity Database converter and a GIF to Spritesheet converter.
-Really helpful stuff.
-These stuff are made for Pokemon Unity because I have too much spare time.
+In the Database folder you'll find the Veekun database and a converter which can convert the Veekun database into a database suitable for Pokemon Unity
+In the Sprites folder you can find sprites (in GIF, Spritesheet and frame format) from Pokemon Black 2 and White 2 + a program that supports GIF to spritesheet and GIF to frames
+In the Unity Scripts folder you can find some helpful scripts that can help you with Pokemon Unity, like Ashy's SpriteSizeChanger (which changes the size of the sprite in Unity depending on the dimensions of the frames)
+
+I hope you can find something interesting or helpful in this repo.
+If you have any questions you can ask them in the Pokemon Unity Discord server (in which I'm active)
+Or add me on Discord: Velorexe#8403
 
 Check out Pokemon Unity
 ## Links
