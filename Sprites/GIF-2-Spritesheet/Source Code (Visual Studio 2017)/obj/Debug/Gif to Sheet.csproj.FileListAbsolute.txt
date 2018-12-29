@@ -66,3 +66,12 @@ C:\Users\David Blerkselmans\Desktop\PKUnityInessentials\Sprites\Executable\Gif t
 C:\Users\David Blerkselmans\Desktop\PKUnityInessentials\Sprites\Executable\Gif to Sheet.pdb
 C:\Users\David Blerkselmans\Desktop\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Executable\Gif to Sheet.exe
 C:\Users\David Blerkselmans\Desktop\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Executable\Gif to Sheet.pdb
+F:\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Source Code (Visual Studio 2017)\obj\Debug\Gif to Sheet.csprojAssemblyReference.cache
+F:\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Source Code (Visual Studio 2017)\obj\Debug\Gif_to_Sheet.MainForm.resources
+F:\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Source Code (Visual Studio 2017)\obj\Debug\Gif_to_Sheet.Properties.Resources.resources
+F:\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Source Code (Visual Studio 2017)\obj\Debug\Gif to Sheet.csproj.GenerateResource.cache
+F:\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Source Code (Visual Studio 2017)\obj\Debug\Gif to Sheet.csproj.CoreCompileInputs.cache
+F:\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Source Code (Visual Studio 2017)\obj\Debug\Gif to Sheet.exe
+F:\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Source Code (Visual Studio 2017)\obj\Debug\Gif to Sheet.pdb
+F:\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Source Code (Visual Studio 2017)\Gif to Sheet.exe
+F:\PKUnityInessentials\Sprites\GIF-2-Spritesheet\Source Code (Visual Studio 2017)\Gif to Sheet.pdb

@@ -60,41 +60,70 @@ namespace Gif_to_Sheet
                 return;
             if (bitmap != null)
                 bitmap.Dispose();
-            int x;
-            if (WidthBox.Text != "")
+
+            int x = 0;
+            int y = 0;
+
+            if (!OriginalSizeCheck.Checked)
             {
-                x = Convert.ToInt32(Regex.Replace(WidthBox.Text, "[^0-9.]", ""));
+                if (WidthBox.Text != "")
+                {
+                    x = Convert.ToInt32(Regex.Replace(WidthBox.Text, "[^0-9.]", ""));
+                }
+                else
+                {
+                    x = 160;
+                    WidthBox.Text = x.ToString();
+                }
+
+                if (HeightBox.Text != "")
+                {
+                    y = Convert.ToInt32(Regex.Replace(HeightBox.Text, "[^0-9.]", ""));
+                }
+                else
+                {
+                    y = 160;
+                    HeightBox.Text = y.ToString();
+                }
             }
             else
             {
-                x = 160;
+                x = gif.Size.Width;
+                y = gif.Size.Height;
             }
-            WidthBox.Text = x.ToString();
-            int y;
-            if (HeightBox.Text != "")
-            {
-                y = Convert.ToInt32(Regex.Replace(HeightBox.Text, "[^0-9.]", ""));
-            }
-            else
-            {
-                y = 160;
-            }
-            HeightBox.Text = y.ToString();
+
             FrameDimension frameSize = new FrameDimension(gif.FrameDimensionsList[0]);
             Size imageSize = new Size(x, y);
+
             frames = gif.GetFrameCount(frameSize);
-            int columns = (int)nudColumns.Value < 1 ? frames : (int)nudColumns.Value;
-            int rows = (int)Math.Ceiling((double)frames / columns);
+
+            int columns = 0;
+            int rows = 0;
+
+            if (!SingleLineCheck.Checked)
+            {
+                columns = (int)nudColumns.Value < 1 ? frames : (int)nudColumns.Value;
+            }
+            else
+            {
+                columns = 0 < 1 ? frames : (int)nudColumns.Value;
+            }
+            rows = (int)Math.Ceiling((double)frames / columns);
+
             bitmap = new Bitmap(columns * imageSize.Width, rows * imageSize.Height);
+
             Graphics g = Graphics.FromImage(bitmap);
             Brush brush = new SolidBrush(pbBackColor.BackColor);
+
             g.FillRectangle(brush, new Rectangle(0, 0, bitmap.Width + frames, bitmap.Height + frames));
             for (int i = 0; i < frames; i++)
             {
                 gif.SelectActiveFrame(frameSize, i);
                 g.DrawImage(gif, (i % columns * x) + (x / 2) - gif.Size.Width / 2, (i / columns * y) + y - gif.Size.Height);
             }
+
             g.Dispose();
+
             pbSprite.Image = bitmap;
             pbSprite.Size = bitmap.Size;
         }
@@ -122,7 +151,7 @@ namespace Gif_to_Sheet
                 fbd.Description = "Select the folder where you want the spritesheets to be saved";
                 fbd.ShowDialog();
 
-                if (GifToFramesCheckbox.Checked == false)
+                if (!GifToFramesCheckbox.Checked)
                 {
                     if (fbd.SelectedPath != "")
                     {
@@ -205,18 +234,9 @@ namespace Gif_to_Sheet
 
         private void GifToFramesCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (GifToFramesCheckbox.Checked == true)
-            {
-                WidthBox.Enabled = false;
-                HeightBox.Enabled = false;
-                nudColumns.Enabled = false;
-            }
-            else
-            {
-                WidthBox.Enabled = true;
-                HeightBox.Enabled = true;
-                nudColumns.Enabled = true;
-            }
+            WidthBox.Enabled = !GifToFramesCheckbox.Checked;
+            HeightBox.Enabled = !GifToFramesCheckbox.Checked;
+            nudColumns.Enabled = !GifToFramesCheckbox.Checked;
         }
 
         public Bitmap CropImage(Bitmap source, Rectangle section)
@@ -231,6 +251,19 @@ namespace Gif_to_Sheet
             g.DrawImage(source, 0, 0, section, GraphicsUnit.Pixel);
 
             return bmp;
+        }
+
+        private void OriginalSizeCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            WidthBox.Enabled = !OriginalSizeCheck.Checked;
+            HeightBox.Enabled = !OriginalSizeCheck.Checked;
+            FormatImage();
+        }
+
+        private void SingleLineCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            nudColumns.Enabled = !SingleLineCheck.Checked;
+            FormatImage();
         }
     }
 }
