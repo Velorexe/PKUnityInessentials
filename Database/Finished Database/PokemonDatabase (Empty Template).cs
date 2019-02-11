@@ -35,7 +35,6 @@ public static class PokemonDatabase
     private static PokemonData[] pokedex = new PokemonData[]
     {
         null,
-        
     };
 
     private static int[] expTableErratic = new int[]
