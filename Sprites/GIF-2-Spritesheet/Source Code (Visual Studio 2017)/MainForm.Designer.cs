@@ -46,24 +46,32 @@
             this.WidthBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.GifToFramesCheckbox = new System.Windows.Forms.CheckBox();
+            this.OriginalSizeCheck = new System.Windows.Forms.CheckBox();
+            this.sizeGroup = new System.Windows.Forms.GroupBox();
+            this.fileGroup = new System.Windows.Forms.GroupBox();
+            this.spritesheetGroup = new System.Windows.Forms.GroupBox();
+            this.SingleLineCheck = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudColumns)).BeginInit();
             this.panelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSprite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackColor)).BeginInit();
+            this.sizeGroup.SuspendLayout();
+            this.fileGroup.SuspendLayout();
+            this.spritesheetGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblFile
             // 
             this.lblFile.AutoSize = true;
-            this.lblFile.Location = new System.Drawing.Point(12, 9);
+            this.lblFile.Location = new System.Drawing.Point(6, 22);
             this.lblFile.Name = "lblFile";
-            this.lblFile.Size = new System.Drawing.Size(23, 13);
+            this.lblFile.Size = new System.Drawing.Size(39, 13);
             this.lblFile.TabIndex = 0;
-            this.lblFile.Text = "File";
+            this.lblFile.Text = "Folder:";
             // 
             // tbFile
             // 
-            this.tbFile.Location = new System.Drawing.Point(12, 25);
+            this.tbFile.Location = new System.Drawing.Point(50, 19);
             this.tbFile.Name = "tbFile";
             this.tbFile.ReadOnly = true;
             this.tbFile.Size = new System.Drawing.Size(189, 20);
@@ -71,9 +79,9 @@
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(207, 23);
+            this.btnBrowse.Location = new System.Drawing.Point(9, 45);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.Size = new System.Drawing.Size(89, 45);
             this.btnBrowse.TabIndex = 2;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -82,22 +90,22 @@
             // lblColumns
             // 
             this.lblColumns.AutoSize = true;
-            this.lblColumns.Location = new System.Drawing.Point(288, 9);
+            this.lblColumns.Location = new System.Drawing.Point(6, 21);
             this.lblColumns.Name = "lblColumns";
-            this.lblColumns.Size = new System.Drawing.Size(47, 13);
+            this.lblColumns.Size = new System.Drawing.Size(50, 13);
             this.lblColumns.TabIndex = 3;
-            this.lblColumns.Text = "Columns";
+            this.lblColumns.Text = "Columns:";
             // 
             // nudColumns
             // 
-            this.nudColumns.Location = new System.Drawing.Point(291, 25);
+            this.nudColumns.Location = new System.Drawing.Point(59, 19);
             this.nudColumns.Maximum = new decimal(new int[] {
             15,
             0,
             0,
             0});
             this.nudColumns.Name = "nudColumns";
-            this.nudColumns.Size = new System.Drawing.Size(111, 20);
+            this.nudColumns.Size = new System.Drawing.Size(135, 20);
             this.nudColumns.TabIndex = 4;
             this.nudColumns.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudColumns.Value = new decimal(new int[] {
@@ -116,9 +124,9 @@
             this.panelMain.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMain.Controls.Add(this.pbSprite);
-            this.panelMain.Location = new System.Drawing.Point(12, 73);
+            this.panelMain.Location = new System.Drawing.Point(12, 114);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(551, 366);
+            this.panelMain.Size = new System.Drawing.Size(597, 371);
             this.panelMain.TabIndex = 5;
             // 
             // pbSprite
@@ -134,9 +142,9 @@
             // 
             this.pbBackColor.BackColor = System.Drawing.Color.Transparent;
             this.pbBackColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbBackColor.Location = new System.Drawing.Point(13, 51);
+            this.pbBackColor.Location = new System.Drawing.Point(9, 71);
             this.pbBackColor.Name = "pbBackColor";
-            this.pbBackColor.Size = new System.Drawing.Size(16, 16);
+            this.pbBackColor.Size = new System.Drawing.Size(14, 14);
             this.pbBackColor.TabIndex = 6;
             this.pbBackColor.TabStop = false;
             this.pbBackColor.Click += new System.EventHandler(this.pbBackColor_Click);
@@ -144,7 +152,7 @@
             // lblBackColor
             // 
             this.lblBackColor.AutoSize = true;
-            this.lblBackColor.Location = new System.Drawing.Point(35, 51);
+            this.lblBackColor.Location = new System.Drawing.Point(29, 71);
             this.lblBackColor.Name = "lblBackColor";
             this.lblBackColor.Size = new System.Drawing.Size(92, 13);
             this.lblBackColor.TabIndex = 7;
@@ -152,9 +160,9 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(207, 46);
+            this.btnExport.Location = new System.Drawing.Point(104, 45);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.Size = new System.Drawing.Size(81, 45);
             this.btnExport.TabIndex = 8;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -163,7 +171,7 @@
             // Progress
             // 
             this.Progress.AutoSize = true;
-            this.Progress.Location = new System.Drawing.Point(288, 51);
+            this.Progress.Location = new System.Drawing.Point(191, 61);
             this.Progress.Name = "Progress";
             this.Progress.Size = new System.Drawing.Size(48, 13);
             this.Progress.TabIndex = 9;
@@ -176,7 +184,7 @@
             // 
             // HeightBox
             // 
-            this.HeightBox.Location = new System.Drawing.Point(500, 46);
+            this.HeightBox.Location = new System.Drawing.Point(50, 68);
             this.HeightBox.Name = "HeightBox";
             this.HeightBox.Size = new System.Drawing.Size(63, 20);
             this.HeightBox.TabIndex = 10;
@@ -185,7 +193,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(459, 51);
+            this.label1.Location = new System.Drawing.Point(6, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 11;
@@ -193,7 +201,7 @@
             // 
             // WidthBox
             // 
-            this.WidthBox.Location = new System.Drawing.Point(390, 47);
+            this.WidthBox.Location = new System.Drawing.Point(50, 42);
             this.WidthBox.Name = "WidthBox";
             this.WidthBox.Size = new System.Drawing.Size(63, 20);
             this.WidthBox.TabIndex = 12;
@@ -203,16 +211,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(349, 53);
+            this.label2.Location = new System.Drawing.Point(6, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Width";
+            this.label2.Text = "Width:";
             // 
             // GifToFramesCheckbox
             // 
             this.GifToFramesCheckbox.AutoSize = true;
-            this.GifToFramesCheckbox.Location = new System.Drawing.Point(408, 27);
+            this.GifToFramesCheckbox.Location = new System.Drawing.Point(98, 45);
             this.GifToFramesCheckbox.Name = "GifToFramesCheckbox";
             this.GifToFramesCheckbox.Size = new System.Drawing.Size(96, 17);
             this.GifToFramesCheckbox.TabIndex = 14;
@@ -220,26 +228,80 @@
             this.GifToFramesCheckbox.UseVisualStyleBackColor = true;
             this.GifToFramesCheckbox.CheckedChanged += new System.EventHandler(this.GifToFramesCheckbox_CheckedChanged);
             // 
+            // OriginalSizeCheck
+            // 
+            this.OriginalSizeCheck.AutoSize = true;
+            this.OriginalSizeCheck.Location = new System.Drawing.Point(9, 19);
+            this.OriginalSizeCheck.Name = "OriginalSizeCheck";
+            this.OriginalSizeCheck.Size = new System.Drawing.Size(112, 17);
+            this.OriginalSizeCheck.TabIndex = 15;
+            this.OriginalSizeCheck.Text = "Keep Original Size";
+            this.OriginalSizeCheck.UseVisualStyleBackColor = true;
+            this.OriginalSizeCheck.CheckedChanged += new System.EventHandler(this.OriginalSizeCheck_CheckedChanged);
+            // 
+            // sizeGroup
+            // 
+            this.sizeGroup.Controls.Add(this.label2);
+            this.sizeGroup.Controls.Add(this.OriginalSizeCheck);
+            this.sizeGroup.Controls.Add(this.WidthBox);
+            this.sizeGroup.Controls.Add(this.label1);
+            this.sizeGroup.Controls.Add(this.HeightBox);
+            this.sizeGroup.Location = new System.Drawing.Point(469, 12);
+            this.sizeGroup.Name = "sizeGroup";
+            this.sizeGroup.Size = new System.Drawing.Size(140, 96);
+            this.sizeGroup.TabIndex = 16;
+            this.sizeGroup.TabStop = false;
+            this.sizeGroup.Text = "Size";
+            // 
+            // fileGroup
+            // 
+            this.fileGroup.Controls.Add(this.lblFile);
+            this.fileGroup.Controls.Add(this.tbFile);
+            this.fileGroup.Controls.Add(this.btnBrowse);
+            this.fileGroup.Controls.Add(this.btnExport);
+            this.fileGroup.Controls.Add(this.Progress);
+            this.fileGroup.Location = new System.Drawing.Point(12, 12);
+            this.fileGroup.Name = "fileGroup";
+            this.fileGroup.Size = new System.Drawing.Size(245, 96);
+            this.fileGroup.TabIndex = 17;
+            this.fileGroup.TabStop = false;
+            this.fileGroup.Text = "File";
+            // 
+            // spritesheetGroup
+            // 
+            this.spritesheetGroup.Controls.Add(this.SingleLineCheck);
+            this.spritesheetGroup.Controls.Add(this.lblColumns);
+            this.spritesheetGroup.Controls.Add(this.nudColumns);
+            this.spritesheetGroup.Controls.Add(this.GifToFramesCheckbox);
+            this.spritesheetGroup.Controls.Add(this.lblBackColor);
+            this.spritesheetGroup.Controls.Add(this.pbBackColor);
+            this.spritesheetGroup.Location = new System.Drawing.Point(263, 12);
+            this.spritesheetGroup.Name = "spritesheetGroup";
+            this.spritesheetGroup.Size = new System.Drawing.Size(200, 96);
+            this.spritesheetGroup.TabIndex = 18;
+            this.spritesheetGroup.TabStop = false;
+            this.spritesheetGroup.Text = "Spritesheet";
+            // 
+            // SingleLineCheck
+            // 
+            this.SingleLineCheck.AutoSize = true;
+            this.SingleLineCheck.Location = new System.Drawing.Point(9, 45);
+            this.SingleLineCheck.Name = "SingleLineCheck";
+            this.SingleLineCheck.Size = new System.Drawing.Size(78, 17);
+            this.SingleLineCheck.TabIndex = 10;
+            this.SingleLineCheck.Text = "Single Line";
+            this.SingleLineCheck.UseVisualStyleBackColor = true;
+            this.SingleLineCheck.CheckedChanged += new System.EventHandler(this.SingleLineCheck_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 451);
-            this.Controls.Add(this.GifToFramesCheckbox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.WidthBox);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.HeightBox);
-            this.Controls.Add(this.Progress);
-            this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.lblBackColor);
-            this.Controls.Add(this.pbBackColor);
+            this.ClientSize = new System.Drawing.Size(621, 497);
+            this.Controls.Add(this.spritesheetGroup);
+            this.Controls.Add(this.fileGroup);
+            this.Controls.Add(this.sizeGroup);
             this.Controls.Add(this.panelMain);
-            this.Controls.Add(this.nudColumns);
-            this.Controls.Add(this.lblColumns);
-            this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.tbFile);
-            this.Controls.Add(this.lblFile);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -248,8 +310,13 @@
             this.panelMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbSprite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackColor)).EndInit();
+            this.sizeGroup.ResumeLayout(false);
+            this.sizeGroup.PerformLayout();
+            this.fileGroup.ResumeLayout(false);
+            this.fileGroup.PerformLayout();
+            this.spritesheetGroup.ResumeLayout(false);
+            this.spritesheetGroup.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -272,6 +339,11 @@
         private System.Windows.Forms.TextBox WidthBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox GifToFramesCheckbox;
+        private System.Windows.Forms.CheckBox OriginalSizeCheck;
+        private System.Windows.Forms.GroupBox sizeGroup;
+        private System.Windows.Forms.GroupBox fileGroup;
+        private System.Windows.Forms.GroupBox spritesheetGroup;
+        private System.Windows.Forms.CheckBox SingleLineCheck;
     }
 }
 
